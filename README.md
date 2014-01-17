@@ -1,12 +1,12 @@
 ilastik-build-Linux
 ===================
 
-Use buildem to compile ilastik and all its dependencies on Linux. Usage:
+Use buildem to compile ilastik and all its dependencies on Mac OSX 10.9. Usage:
 
 ```
 > mkdir <ilastik_build_dir>
 > cd <ilastik_build_dir>
-> git clone https://github.com/ilastik/ilastik-build-Linux.git
+> git clone https://github.com/chaubold/ilastik-build-Linux.git
 > mkdir build
 > cd build
 > cmake ../ilastik-build-Linux -DBUILDEM_DIR=<ilastik_build_dir>
