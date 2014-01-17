@@ -17,7 +17,7 @@ endif ()
 get_filename_component(BUILDEM_REPO_DIR ../buildem ABSOLUTE)
 if (NOT EXISTS ${BUILDEM_REPO_DIR}/python.cmake)
     message ("Downloading buildem repository ...")
-    execute_process(COMMAND git clone https://github.com/janelia-flyem/buildem.git ${BUILDEM_REPO_DIR}
+    execute_process(COMMAND git clone -b fix/OSX10.9 https://github.com/chaubold/buildem.git ${BUILDEM_REPO_DIR}
                     WORKING_DIRECTORY ${BUILDEM_DIR}
                     RESULT_VARIABLE BUILDEM_INSTALL_FAILED)
     if(BUILDEM_INSTALL_FAILED)
@@ -32,6 +32,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${BUILDEM_REPO_DIR})
 #     compile ilastik and its dependencies
 #
 #############################################
+
+if((${CMAKE_SYSTEM_NAME} MATCHES "Darwin") AND ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
+	set(BUILDEM_ADDITIONAL_CXX_FLAGS "-stdlib=libstdc++")
+endif()
 
 set(CPLEX_ROOT_DIR "" CACHE PATH "CPLEX root directory")
 
